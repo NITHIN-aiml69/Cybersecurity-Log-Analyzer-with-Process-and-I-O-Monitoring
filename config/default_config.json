@@ -1,0 +1,60 @@
+{
+  "student_info": {
+    "name": "NITHIN N",
+    "roll_number": "25BTRPW066",
+    "project_title": "Cybersecurity Log Analyzer with Process and I/O Monitoring",
+    "course_outcomes": ["CO2", "CO4", "CO5", "CO6"]
+  },
+  "thresholds": {
+    "system_cpu_warning_pct": 75.0,
+    "system_cpu_critical_pct": 90.0,
+    "process_cpu_warning_pct": 60.0,
+    "process_cpu_critical_pct": 80.0,
+    "system_memory_warning_pct": 75.0,
+    "system_memory_critical_pct": 88.0,
+    "process_memory_mb_warning": 500.0,
+    "iowait_warning_pct": 20.0,
+    "iowait_critical_pct": 40.0,
+    "disk_usage_warning_pct": 85.0,
+    "disk_usage_critical_pct": 95.0,
+    "io_write_mbs_warning": 25.0
+  },
+  "security_rules": {
+    "ssh_brute_force_threshold": 4,
+    "ssh_brute_force_window_sec": 60,
+    "sudo_failure_threshold": 3,
+    "sudo_failure_window_sec": 60,
+    "suspicious_patterns": [
+      "nc -e",
+      "bash -i",
+      "/dev/tcp/",
+      "curl.*\\|.*bash",
+      "wget.*\\|.*sh",
+      "chmod\\s+(?:-R\\s+)?777",
+      "cat\\s+/etc/shadow",
+      "xmrig",
+      "minerd",
+      "stratum\\+tcp"
+    ]
+  },
+  "log_rotation": {
+    "target_logs": [
+      "cyber_log_analyzer/logs/auth.log",
+      "cyber_log_analyzer/logs/system_audit.log",
+      "cyber_log_analyzer/logs/app.log"
+    ],
+    "max_log_size_bytes": 1048576,
+    "archive_dir": "cyber_log_analyzer/archives",
+    "max_archives": 7,
+    "compression_format": "gzip",
+    "strategy": "copytruncate",
+    "verify_sha256": true
+  },
+  "monitoring": {
+    "scan_interval_sec": 2.0,
+    "top_process_count": 8,
+    "enable_cross_platform_mock": true,
+    "web_port": 8080,
+    "web_host": "0.0.0.0"
+  }
+}

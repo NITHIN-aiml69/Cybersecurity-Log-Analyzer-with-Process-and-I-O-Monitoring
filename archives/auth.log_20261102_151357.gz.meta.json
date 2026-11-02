@@ -1,0 +1,11 @@
+{
+  "original_file": "cyber_log_analyzer/logs/auth.log",
+  "archive_file": "cyber_log_analyzer/archives/auth.log_20261102_151357.gz",
+  "rotated_at": "2026-11-02 15:13:57",
+  "original_size_bytes": 2039645,
+  "compressed_size_bytes": 68577,
+  "space_saved_percent": 96.6,
+  "sha256_checksum": "4535402d6d2dda7463a982b251d549ee2bd1b7dec7d2e38cb743f3b22fbd0659",
+  "student_name": "NITHIN N",
+  "roll_number": "25BTRPW066"
+}
