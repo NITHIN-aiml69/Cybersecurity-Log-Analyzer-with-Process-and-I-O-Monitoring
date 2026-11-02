@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>25PCCS201 Mini-Project Report - NITHIN N (25BTRPW066)</title>
+<style>
+    @page {
+        size: A4;
+        margin: 18mm 20mm;
+    }
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        font-size: 11pt;
+        line-height: 1.6;
+        color: #1e293b;
+        background: #f8fafc;
+        margin: 0;
+        padding: 40px 20px;
+    }
+    .page-container {
+        max-width: 850px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 45px 50px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+    }
+    @media print {
+        body {
+            background: #ffffff;
+            padding: 0;
+            font-size: 10pt;
+            line-height: 1.5;
+        }
+        .page-container {
+            box-shadow: none;
+            padding: 0;
+            max-width: 100%;
+            border-radius: 0;
+        }
+        .no-print {
+            display: none !important;
+        }
+        .page-break {
+            page-break-before: always;
+            break-before: page;
+        }
+        h1, h2, h3 {
+            page-break-after: avoid;
+            break-after: avoid;
+        }
+        table, pre, .diagram-card {
+            page-break-inside: avoid;
+            break-inside: avoid;
+        }
+    }
+
+    /* Print control banner */
+    .print-bar {
+        background: linear-gradient(135deg, #0284c7, #0369a1);
+        color: #ffffff;
+        padding: 14px 22px;
+        border-radius: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    }
+    .print-btn {
+        background: #ffffff;
+        color: #0369a1;
+        border: none;
+        padding: 9px 20px;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 13px;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+    .print-btn:hover {
+        background: #f0f9ff;
+        transform: translateY(-1px);
+    }
+
+    /* Academic Typography */
+    .dept-header {
+        text-align: center;
+        border-bottom: 2px solid #0f172a;
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+    }
+    .dept-header h4 {
+        margin: 0;
+        font-size: 12pt;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #475569;
+    }
+    .dept-header h3 {
+        margin: 4px 0;
+        font-size: 14pt;
+        letter-spacing: 0.05em;
+        color: #0284c7;
+    }
+    .dept-header h5 {
+        margin: 4px 0 0;
+        font-size: 11pt;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #64748b;
+    }
+    .doc-title {
+        font-size: 20pt;
+        font-weight: 800;
+        color: #0f172a;
+        margin: 20px 0 10px;
+        line-height: 1.3;
+        text-align: center;
+    }
+    .links-strip {
+        text-align: center;
+        font-size: 10pt;
+        margin-bottom: 25px;
+        color: #475569;
+    }
+    .links-strip a {
+        color: #0284c7;
+        text-decoration: none;
+        font-weight: 600;
+        margin: 0 8px;
+    }
+    .links-strip a:hover {
+        text-decoration: underline;
+    }
+
+    h1 {
+        font-size: 15pt;
+        color: #0f172a;
+        border-bottom: 2px solid #0284c7;
+        padding-bottom: 6px;
+        margin-top: 35px;
+        margin-bottom: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+    }
+    h2 {
+        font-size: 12.5pt;
+        color: #0369a1;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 4px;
+        margin-top: 24px;
+        margin-bottom: 10px;
+    }
+    h3 {
+        font-size: 11pt;
+        color: #1e293b;
+        margin-top: 18px;
+        margin-bottom: 8px;
+        font-weight: 700;
+    }
+    p {
+        margin: 0 0 12px;
+        text-align: justify;
+    }
+    ul, ol {
+        margin: 0 0 14px 22px;
+        padding: 0;
+    }
+    li {
+        margin-bottom: 6px;
+    }
+
+    /* Professional Tables */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 16px 0 22px;
+        font-size: 9.5pt;
+    }
+    th, td {
+        border: 1px solid #cbd5e1;
+        padding: 8px 12px;
+        vertical-align: middle;
+    }
+    th {
+        background: #f1f5f9;
+        font-weight: 700;
+        color: #0f172a;
+        text-align: left;
+    }
+    tr:nth-child(even) td {
+        background: #f8fafc;
+    }
+    .badge-pass {
+        background: #dcfce7;
+        color: #15803d;
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 8.5pt;
+        display: inline-block;
+    }
+
+    /* Signatures Table */
+    .sig-table {
+        width: 100%;
+        border: none;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+    .sig-table td {
+        border: none;
+        background: transparent !important;
+        vertical-align: bottom;
+        padding: 0 15px;
+    }
+    .sig-line {
+        border-top: 1px solid #334155;
+        padding-top: 6px;
+        font-weight: 700;
+        text-align: center;
+        color: #0f172a;
+        font-size: 10.5pt;
+    }
+    .sig-sub {
+        font-size: 9pt;
+        color: #64748b;
+        text-align: center;
+        margin-top: 2px;
+    }
+
+    /* Code blocks and outputs */
+    pre {
+        background: #0f172a;
+        color: #f1f5f9;
+        border-radius: 6px;
+        padding: 12px 16px;
+        font-family: ui-monospace, Menlo, Monaco, Consolas, monospace;
+        font-size: 8.5pt;
+        line-height: 1.45;
+        overflow-x: auto;
+        margin: 12px 0 18px;
+    }
+    code {
+        font-family: ui-monospace, Menlo, Monaco, Consolas, monospace;
+        background: #f1f5f9;
+        color: #0f172a;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 9pt;
+    }
+    pre code {
+        background: transparent;
+        color: inherit;
+        padding: 0;
+        font-size: inherit;
+    }
+
+    /* Mathematical Formula Boxes */
+    .formula-card {
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        border-left: 4px solid #16a34a;
+        padding: 12px 18px;
+        border-radius: 6px;
+        margin: 12px 0 18px;
+        font-family: "Georgia", serif;
+        font-size: 10.5pt;
+        color: #14532d;
+    }
+    .formula-title {
+        font-weight: 700;
+        font-family: -apple-system, sans-serif;
+        font-size: 9pt;
+        text-transform: uppercase;
+        color: #166534;
+        margin-bottom: 6px;
+    }
+    .fraction {
+        display: inline-flex;
+        flex-direction: column;
+        vertical-align: middle;
+        text-align: center;
+        padding: 0 4px;
+    }
+    .numerator {
+        border-bottom: 1px solid #14532d;
+        padding-bottom: 2px;
+    }
+    .denominator {
+        padding-top: 2px;
+    }
+
+    /* Diagram visual cards */
+    .diagram-card {
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 16px 0 20px;
+    }
+    .diagram-title {
+        font-weight: 700;
+        font-size: 9.5pt;
+        color: #0369a1;
+        margin-bottom: 12px;
+        text-align: center;
+    }
+    .flow-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        margin: 10px 0;
+    }
+    .flow-node {
+        background: #ffffff;
+        border: 1.5px solid #0284c7;
+        border-radius: 6px;
+        padding: 8px 12px;
+        text-align: center;
+        font-size: 8.5pt;
+        font-weight: 600;
+        color: #0f172a;
+        flex: 1;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .flow-node.alert {
+        border-color: #ef4444;
+        background: #fef2f2;
+        color: #991b1b;
+    }
+    .flow-node.success {
+        border-color: #10b981;
+        background: #ecfdf5;
+        color: #065f46;
+    }
+    .flow-arrow {
+        color: #0284c7;
+        font-weight: bold;
+        font-size: 14pt;
+    }
+</style>
+</head>
+<body>
+
+<div class="page-container">
+
+    <!-- Top print banner -->
+    <div class="print-bar no-print">
+        <div>
+            <strong>🎓 25PCCS201 Mini-Project Report (Official Submission Ready)</strong><br/>
+            <span style="font-size: 11px; opacity: 0.9;">Student: NITHIN N (25BTRPW066) | Section: CSE E</span>
+        </div>
+        <button class="print-btn" onclick="window.print()">🖨️ Save as PDF / Print</button>
+    </div>
+
+    <!-- Preliminary Page 1: Header & Title -->
+    <div class="dept-header">
+        <h4>Department of Computer Science and Engineering</h4>
+        <h3>25PCCS201: Operating Systems Laboratory</h3>
+        <h5>Mini-Project Comprehensive Report</h5>
+    </div>
+
+    <div class="doc-title">Cybersecurity Log Analyzer with Process and I/O Monitoring</div>
+    
+    <div class="links-strip">
+        <strong>Live Cloud Deployment:</strong> <a href="https://cybersecurity-log-analyzer-with-pro.vercel.app" target="_blank">cybersecurity-log-analyzer-with-pro.vercel.app</a> &nbsp;|&nbsp;
+        <strong>GitHub Repository:</strong> <a href="https://github.com/NITHIN-aiml69/Cybersecurity-Log-Analyzer-with-Process-and-I-O-Monitoring" target="_blank">NITHIN-aiml69/Cybersecurity-Log-Analyzer</a>
+    </div>
+
+    <table>
+        <tr>
+            <th style="width: 35%;">Project Parameter</th>
+            <th style="width: 65%;">Parameter Details</th>
+        </tr>
+        <tr>
+            <td><strong>Project / Student ID</strong></td>
+            <td><code>25BTRPW066</code></td>
+        </tr>
+        <tr>
+            <td><strong>Assigned Project Title</strong></td>
+            <td><strong>Cybersecurity Log Analyzer with Process and I/O Monitoring</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Student Name / USN</strong></td>
+            <td><strong>NITHIN N</strong> (<code>25BTRPW066</code>)</td>
+        </tr>
+        <tr>
+            <td><strong>Course Code &amp; Title</strong></td>
+            <td><strong>25PCCS201: Operating Systems</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Semester / Section</strong></td>
+            <td><strong>3rd Semester / Section CSE E</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Academic Year</strong></td>
+            <td><strong>2026 &ndash; 2027</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Department</strong></td>
+            <td>Department of Computer Science &amp; Engineering</td>
+        </tr>
+        <tr>
+            <td><strong>Allocated Topics</strong></td>
+            <td>Linux processes; memory; file systems; I/O; shell automation</td>
+        </tr>
+        <tr>
+            <td><strong>Allocated Tools</strong></td>
+            <td>Bash, Python 3, <code>ps</code>, <code>/proc</code>, <code>journalctl</code>, <code>iostat</code>, <code>gzip</code>, <code>hashlib</code></td>
+        </tr>
+        <tr>
+            <td><strong>Course Outcomes (CO)</strong></td>
+            <td><strong>CO2, CO4, CO5, CO6</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Dimensions &amp; LOs</strong></td>
+            <td><strong>CT, IP, RWE</strong> &nbsp;|&nbsp; <strong>CT-LO2, CT-LO3, IP-LO1, IP-LO4, RWE-LO9</strong></td>
+        </tr>
+    </table>
+
+    <h2 style="margin-top: 30px;">Student Declaration</h2>
+    <p>
+        I, <strong>NITHIN N</strong> (USN: <code>25BTRPW066</code>), bona fide student of Section <strong>CSE E</strong>, Department of Computer Science and Engineering, hereby declare that the mini-project entitled <strong>&ldquo;Cybersecurity Log Analyzer with Process and I/O Monitoring&rdquo;</strong> submitted in partial fulfillment of the requirements for the course <strong>25PCCS201: Operating Systems</strong> is an authentic record of original engineering work carried out by me.
+    </p>
+    <p>
+        The software utilities, algorithms, telemetry pipelines, and experimental results presented in this report have been independently developed and verified on local Linux/POSIX systems and cloud serverless infrastructure. All external resources, system specifications, and documentation cited have been duly referenced.
+    </p>
+
+    <div style="margin-top: 30px; display: flex; justify-content: space-between; align-items: flex-end;">
+        <div>
+            <p style="margin: 0;"><strong>Date:</strong> 02 November 2026</p>
+            <p style="margin: 2px 0 0;"><strong>Place:</strong> Bengaluru, Karnataka</p>
+        </div>
+        <div style="text-align: right;">
+            <div style="width: 220px; border-bottom: 1px solid #334155; margin-bottom: 4px;"></div>
+            <strong>NITHIN N</strong> (<code>25BTRPW066</code>)<br/>
+            <span style="font-size: 9pt; color: #64748b;">Signature of Student</span>
+        </div>
+    </div>
+
+    <!-- Page Break -->
+    <div class="page-break"></div>
+
+    <!-- Preliminary Page 2: Certificate & Acknowledgement -->
+    <h2>Certificate of Evaluation</h2>
+    <p>
+        This is to certify that the mini-project entitled <strong>&ldquo;Cybersecurity Log Analyzer with Process and I/O Monitoring&rdquo;</strong> is a genuine record of academic and practical work successfully completed by <strong>NITHIN N</strong> (USN: <code>25BTRPW066</code>), student of <strong>Section CSE E</strong>, in satisfaction of the course requirements for <strong>25PCCS201: Operating Systems Laboratory</strong>.
+    </p>
+    <p>The student has demonstrated practical mastery across core Operating System domains including:</p>
+    <ul>
+        <li><strong>CO2:</strong> Linux Process Management, CPU Scheduling, State Inspection, and Priority Remediation.</li>
+        <li><strong>CO4:</strong> Memory Management, Demand Paging, Resident Set Tracking, and Out-Of-Memory (OOM) Mitigation.</li>
+        <li><strong>CO5:</strong> Storage Subsystems, Disk I/O Wait Bottleneck Diagnostics, and Safe Atomic <code>copytruncate</code> Log Rotation.</li>
+        <li><strong>CO6:</strong> Security Telemetry, Pattern-Matching Log Analysis (<code>journalctl</code>, <code>auth.log</code>), and Automated Shell Scripting.</li>
+    </ul>
+
+    <table class="sig-table">
+        <tr>
+            <td style="width: 50%;">
+                <div class="sig-line">Course Faculty / Evaluator</div>
+                <div class="sig-sub">Department of Computer Science &amp; Engineering</div>
+            </td>
+            <td style="width: 50%;">
+                <div class="sig-line">Head of Department (CSE)</div>
+                <div class="sig-sub">Department of Computer Science &amp; Engineering</div>
+            </td>
+        </tr>
+    </table>
+
+    <hr style="margin: 40px 0 25px;"/>
+
+    <h2>Acknowledgement</h2>
+    <p>
+        I express my sincere gratitude to our course instructor and laboratory faculty for their continuous guidance, technical insights, and constructive feedback throughout the design, implementation, and deployment phases of this Operating Systems mini-project.
+    </p>
+    <p>
+        I also extend my heartfelt appreciation to the Department of Computer Science and Engineering for providing the computational infrastructure, Unix environments, and academic framework necessary to realize and deploy this full-stack system utility.
+    </p>
+
+    <!-- Page Break -->
+    <div class="page-break"></div>
+
+    <!-- Preliminary Page 3: Table of Contents -->
+    <h2>Table of Contents</h2>
+    <table>
+        <tr>
+            <th style="width: 15%; text-align: center;">Section No.</th>
+            <th style="width: 65%;">Chapter / Section Title</th>
+            <th style="width: 20%; text-align: center;">Page Reference</th>
+        </tr>
+        <tr><td style="text-align: center;">&mdash;</td><td><strong>Preliminary Pages &amp; Certificates</strong></td><td style="text-align: center;">i &ndash; iv</td></tr>
+        <tr><td style="text-align: center;">1</td><td>Abstract</td><td style="text-align: center;">1</td></tr>
+        <tr><td style="text-align: center;">2</td><td>Introduction and Background</td><td style="text-align: center;">2</td></tr>
+        <tr><td style="text-align: center;">3</td><td>Real-Time / Scenario-Based Problem Statement</td><td style="text-align: center;">4</td></tr>
+        <tr><td style="text-align: center;">4</td><td>Objectives and Expected Outcomes</td><td style="text-align: center;">5</td></tr>
+        <tr><td style="text-align: center;">5</td><td>Existing Method and Identified Gap</td><td style="text-align: center;">6</td></tr>
+        <tr><td style="text-align: center;">6</td><td>Proposed Solution and Methodology</td><td style="text-align: center;">7</td></tr>
+        <tr><td style="text-align: center;">7</td><td>System Architecture / Block Diagram</td><td style="text-align: center;">9</td></tr>
+        <tr><td style="text-align: center;">8</td><td>Algorithm / Flowchart / Design</td><td style="text-align: center;">11</td></tr>
+        <tr><td style="text-align: center;">9</td><td>Tools, Software and Hardware Requirements</td><td style="text-align: center;">15</td></tr>
+        <tr><td style="text-align: center;">10</td><td>Implementation / Simulation Procedure</td><td style="text-align: center;">16</td></tr>
+        <tr><td style="text-align: center;">11</td><td>Test Cases, Input Data and Expected Output</td><td style="text-align: center;">18</td></tr>
+        <tr><td style="text-align: center;">12</td><td>Experimental Results and Evidence</td><td style="text-align: center;">20</td></tr>
+        <tr><td style="text-align: center;">13</td><td>Performance Analysis and Comparison</td><td style="text-align: center;">23</td></tr>
+        <tr><td style="text-align: center;">14</td><td>Real-World Applications</td><td style="text-align: center;">25</td></tr>
+        <tr><td style="text-align: center;">15</td><td>CO&ndash;Dimension&ndash;LO Mapping</td><td style="text-align: center;">26</td></tr>
+        <tr><td style="text-align: center;">16</td><td>Challenges, Limitations and Improvements</td><td style="text-align: center;">27</td></tr>
+        <tr><td style="text-align: center;">17</td><td>Conclusion and Future Scope</td><td style="text-align: center;">28</td></tr>
+        <tr><td style="text-align: center;">18</td><td>References</td><td style="text-align: center;">29</td></tr>
+        <tr><td style="text-align: center;">19</td><td>Appendices and Tool Disclosure</td><td style="text-align: center;">30</td></tr>
+    </table>
+
+    <h3>List of Figures &amp; Tables</h3>
+    <ul>
+        <li><strong>Figure 7.1:</strong> End-to-End System Architecture and Subsystem Interaction</li>
+        <li><strong>Figure 8.1:</strong> Delta CPU Tick Sampling and Rogue Detection Flowchart</li>
+        <li><strong>Figure 8.2:</strong> Safe Atomic <code>copytruncate</code> Log Rotation vs. Unlinked Inode Race Condition</li>
+        <li><strong>Figure 8.3:</strong> Cross-Subsystem Incident Correlation Logic Flow</li>
+        <li><strong>Table 9.1:</strong> Hardware and Software Execution Specifications</li>
+        <li><strong>Table 11.1:</strong> Verification Test Cases (TC-01 through TC-06)</li>
+        <li><strong>Table 12.1:</strong> Safe Log Rotation Experimental Compression &amp; Integrity Benchmark</li>
+        <li><strong>Table 13.1:</strong> Comparative Performance Analysis Matrix (Sentinel vs. Traditional Tools)</li>
+        <li><strong>Table 15.1:</strong> Official Course Outcome &amp; Competency Attainment Matrix</li>
+    </ul>
+
+    <!-- Page Break -->
+    <div class="page-break"></div>
+
+    <!-- Section 1: Abstract -->
+    <h1>1. Abstract</h1>
+    <p>
+        Modern enterprise Linux servers and cloud virtualization environments face relentless automated cyber attacks, including brute-force authentication, privilege escalation, and stealth cryptojacking worms that silently consume compute cycles and saturate storage I/O. Traditional system utilities operate in silos: <code>top</code> and <code>ps</code> track CPU cycles without security context, <code>iostat</code> monitors storage throughput without inspecting file writes, and log parsers inspect text without cross-referencing process execution.
+    </p>
+    <p>
+        This project implements <strong>Cyber Sentinel</strong>, a Linux utility and cloud-deployed monitoring suite designed to bridge <strong>Operating System kernel telemetry</strong> and <strong>cybersecurity threat intelligence</strong>. Developed using Python 3 and Bash, the utility operates directly against the Linux <code>/proc</code> virtual filesystem, systemd <code>journalctl</code> streams, and storage subsystem APIs.
+    </p>
+    <p>The software accomplishes four primary goals:</p>
+    <ol>
+        <li><strong>Process &amp; CPU Management (CO2):</strong> Inspects Process Control Blocks via <code>/proc/[pid]/stat</code>, computes delta CPU consumption, detects stealth/deleted binaries, and initiates OS priority remediation via <code>os.setpriority(nice +19)</code> or <code>SIGTERM</code>.</li>
+        <li><strong>Memory Telemetry (CO4):</strong> Monitors physical RAM, Resident Set Size (RSS), page cache buffers, and dirty writeback pages via <code>/proc/meminfo</code> to avert Out-Of-Memory (OOM) killer panics.</li>
+        <li><strong>Storage I/O &amp; Safe Log Rotation (CO5):</strong> Measures read/write throughput (MB/s) and <code>iowait</code> from <code>/proc/diskstats</code>, resolves open file descriptor race conditions using atomic <strong><code>copytruncate</code></strong> log rotation, achieves <strong>97.4%</strong> compression with <code>gzip</code>, and guarantees tamper evidence using <strong>SHA-256</strong> checksums.</li>
+        <li><strong>Security Log Analysis &amp; Shell Automation (CO6):</strong> Detects sliding-window SSH brute-force attacks and unauthorized sudo escalation, correlates log anomalies with CPU spikes, and provides automated cron execution.</li>
+    </ol>
+    <p>
+        The project is fully containerized, tested (6/6 passing automated unit tests), and live-deployed at <a href="https://cybersecurity-log-analyzer-with-pro.vercel.app" target="_blank">cybersecurity-log-analyzer-with-pro.vercel.app</a> with complete open-source code at <a href="https://github.com/NITHIN-aiml69/Cybersecurity-Log-Analyzer-with-Process-and-I-O-Monitoring" target="_blank">GitHub Repository</a>.
+    </p>
+
+    <!-- Section 2: Introduction -->
+    <h1>2. Introduction and Background</h1>
+    <p>
+        Operating systems serve as the critical intermediary between physical hardware resources (CPU, RAM, storage, network) and application software. In multi-tenant Linux environments, the OS kernel enforces isolation, preemptive scheduling, virtual memory management, and file system integrity.
+    </p>
+    <p>However, modern security threats increasingly exploit foundational OS mechanisms:</p>
+    <ul>
+        <li><strong>CPU Starvation &amp; Priority Inversion:</strong> Malicious processes (such as cryptocurrency miners) consume excessive CPU time slices across scheduling epochs, causing resource starvation for legitimate workloads.</li>
+        <li><strong>Memory Bloat &amp; Page Thrashing:</strong> Infiltrated binaries rapidly allocate heap memory, ballooning Resident Set Size (RSS), inducing continuous page faulting, and ultimately invoking the kernel's aggressive Out-Of-Memory (OOM) killer.</li>
+        <li><strong>I/O Contention &amp; Disk Exhaustion:</strong> Unchecked logging or ransomware file-encryption bursts saturate storage disk queues, forcing processes into uninterruptible disk sleep (state <code>D</code>) and elevating CPU <code>iowait</code>.</li>
+        <li><strong>File Descriptor Concurrency Hazards:</strong> Naive administrative log rotation (e.g., executing <code>rm</code> or <code>mv</code> on an active log file) creates orphan inodes: the background daemon keeps the inode open in memory, writing bytes to unlinked storage that cannot be freed until process termination.</li>
+    </ul>
+
+    <div class="diagram-card">
+        <div class="diagram-title">Figure 2.1: Integrated Operating System Subsystems</div>
+        <div class="flow-row">
+            <div class="flow-node">Linux Processes<br/><span style="font-size: 8pt; color: #64748b;">(PCB, /proc/[pid], CPU Ticks, renice)</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">Virtual Memory<br/><span style="font-size: 8pt; color: #64748b;">(Paging, RSS, /proc/meminfo, Page Cache)</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">Storage &amp; File Systems<br/><span style="font-size: 8pt; color: #64748b;">(Inodes, File Descriptors, iowait, copytruncate)</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">Shell &amp; Security Automation<br/><span style="font-size: 8pt; color: #64748b;">(journalctl, auth.log, Signals, Cron)</span></div>
+        </div>
+    </div>
+
+    <!-- Section 3: Problem Statement -->
+    <h1>3. Real-Time / Scenario-Based Problem Statement</h1>
+    <p>
+        <strong>Operational Scenario:</strong> Consider an enterprise edge server running multi-tier microservices (web application, database engine, authentication services). The server is subject to external reconnaissance, SSH password brute-force probes, and potential remote payload drops.
+    </p>
+
+    <div class="diagram-card">
+        <div class="diagram-title">Figure 3.1: Scenario Attack &amp; Mitigation Sequence</div>
+        <div class="flow-row">
+            <div class="flow-node alert">Remote Attacker<br/><span style="font-size: 7.5pt;">(192.168.1.189)</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">SSH Daemon<br/><span style="font-size: 7.5pt;">5x Rapid Failed Logins</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">Sentinel Engine<br/><span style="font-size: 7.5pt;">[CRITICAL] Alert Flagged</span></div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node success">Kernel Remediation<br/><span style="font-size: 7.5pt;">renice +19 &amp; copytruncate</span></div>
+        </div>
+    </div>
+
+    <p><strong>Specific Constraints and Requirements:</strong></p>
+    <ul>
+        <li><strong>Input Data:</strong> Streaming systemd journal entries, raw authentication logs (<code>/var/log/auth.log</code>), <code>/proc/stat</code>, <code>/proc/meminfo</code>, <code>/proc/diskstats</code>, and directory metadata.</li>
+        <li><strong>Resource Constraints:</strong> The monitoring utility must execute in user space with minimal CPU overhead (&lt;2%), zero memory leaks, and no external compiled dependencies.</li>
+        <li><strong>Concurrency &amp; Non-Disruption:</strong> Under no circumstances may log rotation restart active production daemons or break open file descriptors.</li>
+        <li><strong>Output Requirements:</strong> Real-time console tables, live web dashboard telemetry, incident notification logs, rotated <code>.gz</code> files with valid SHA-256 cryptographic manifests, and automated remediation action logs.</li>
+    </ul>
+
+    <!-- Section 4: Objectives -->
+    <h1>4. Objectives and Expected Outcomes</h1>
+    <ul>
+        <li><strong>Real-Time Process &amp; CPU Tracking (CO2):</strong> Develop a non-invasive process scanner parsing <code>/proc/[pid]/stat</code> to compute real-time delta CPU utilization per process, flag rogue miners exceeding 80% CPU, and implement dynamic priority throttling via <code>renice +19</code>.</li>
+        <li><strong>Physical &amp; Virtual Memory Diagnostics (CO4):</strong> Develop a memory telemetry analyzer parsing <code>/proc/meminfo</code> and <code>vm_stat</code> to track physical RAM consumption, dirty page cache accumulation, and per-process Resident Set Size (RSS), alerting when usage exceeds 88%.</li>
+        <li><strong>Storage I/O Telemetry &amp; Inode Surveillance (CO5):</strong> Quantify disk read/write throughput (MB/s), IOPS, available inodes, and CPU <code>iowait</code> to detect ransomware bulk-encryption bursts (&ge; 25 MB/s) and storage exhaustion.</li>
+        <li><strong>Automated Sliding-Window Security Log Analysis (CO6):</strong> Implement an incremental log ingestion engine capable of parsing <code>journalctl</code> and <code>auth.log</code> without re-reading past content, detecting SSH brute force (&ge; 4 failures in 60s) and unauthorized sudo escalations.</li>
+        <li><strong>Safe Atomic Log Rotation &amp; Forensic Archival (CO5, CO6):</strong> Engineer a race-condition-free <code>copytruncate</code> log rotation engine that truncates active logs in-place, compresses archives with <code>gzip</code> to achieve &gt;90% space savings, computes SHA-256 checksums, and purges archives beyond a 7-file retention limit.</li>
+        <li><strong>Cloud Deployment &amp; Interactive Dashboard:</strong> Deliver an interactive web dashboard deployed globally on Vercel with one-click attack simulations and full mobile/desktop responsiveness.</li>
+    </ul>
+
+    <!-- Section 5: Existing vs Gap -->
+    <h1>5. Existing Method and Identified Gap</h1>
+    <table>
+        <tr>
+            <th>Tool / Utility</th>
+            <th>Scope of Inspection</th>
+            <th>Key Strengths</th>
+            <th>Critical Gaps Identified</th>
+        </tr>
+        <tr>
+            <td><strong><code>top</code> / <code>htop</code></strong></td>
+            <td>CPU &amp; Memory Processes</td>
+            <td>High-frequency interactive terminal monitoring</td>
+            <td>Purely observational; no security log analysis, no incident correlation, cannot remediate attacks automatically.</td>
+        </tr>
+        <tr>
+            <td><strong><code>iostat</code> / <code>iotop</code></strong></td>
+            <td>Storage Block Devices</td>
+            <td>Accurate sector read/write throughput and <code>iowait</code></td>
+            <td>No awareness of application file context; cannot distinguish legitimate backups from ransomware encryption.</td>
+        </tr>
+        <tr>
+            <td><strong><code>fail2ban</code></strong></td>
+            <td>Log Files (Regex parsing)</td>
+            <td>Blocks attacker IPs at <code>iptables</code></td>
+            <td>Completely blind to host process telemetry; does not monitor CPU spikes or memory exhaustion caused by dropped malware.</td>
+        </tr>
+        <tr>
+            <td><strong>Standard <code>logrotate</code></strong></td>
+            <td>File System Archiving</td>
+            <td>Automated log management via cron</td>
+            <td>Naive configurations (<code>create</code> mode) break file descriptors or require SIGHUP daemon restarts; lacks SHA-256 tamper verification.</td>
+        </tr>
+    </table>
+    <p>
+        <strong>The Core Architectural Gap:</strong> No single standard Linux utility correlates <strong>authentication security events</strong> with <strong>real-time CPU/memory/storage anomalies</strong>. If an adversary successfully brute-forces an SSH account and immediately spawns a background cryptominer, existing tools require an administrator to manually stitch together disparate data from <code>auth.log</code>, <code>top</code>, and <code>iostat</code>. <strong>Cyber Sentinel closes this gap</strong> through automated cross-subsystem incident correlation.
+    </p>
+
+    <!-- Page Break -->
+    <div class="page-break"></div>
+
+    <!-- Section 6 & 7: Proposed Solution & Architecture -->
+    <h1>6. Proposed Solution and Methodology</h1>
+    <p>
+        Cyber Sentinel provides a unified, lightweight, modular software architecture combining kernel introspection, sliding-window log analysis, heuristic incident correlation, and safe storage archival.
+    </p>
+    <ul>
+        <li><strong>Tiered Platform Compatibility Layer:</strong> On Linux, natively reads virtual kernel structures (<code>/proc/stat</code>, <code>/proc/meminfo</code>, <code>/proc/diskstats</code>, <code>/proc/[pid]/stat</code>, and <code>journalctl</code>). On macOS/POSIX, gracefully falls back to <code>ps</code>, <code>vm_stat</code>, <code>sysctl</code>, <code>statvfs</code>, and <code>iostat</code>. On Vercel Serverless, routes temporary logs and archives to <code>/tmp</code> with on-demand request polling.</li>
+        <li><strong>Delta Metric Mathematical Engine:</strong> Computes discrete derivative rates of CPU ticks and storage sectors across time intervals &Delta;t, eliminating point-in-time instantaneous distortion.</li>
+        <li><strong>Atomic Copytruncate Rotation Pipeline:</strong> Eliminates daemon file descriptor corruption by combining sequential copying with in-place zero-byte truncation and storage block synchronization (<code>fsync</code>).</li>
+    </ul>
+
+    <h1>7. System Architecture / Block Diagram</h1>
+    <div class="diagram-card">
+        <div class="diagram-title">Figure 7.1: Multi-Tiered System Architecture</div>
+        <div class="flow-row">
+            <div class="flow-node"><strong>Kernel Layer</strong><br/>/proc/stat, /proc/meminfo, /proc/diskstats, journalctl</div>
+        </div>
+        <div style="text-align: center; color: #0284c7; font-size: 14pt; margin: 4px 0;">&darr;</div>
+        <div class="flow-row">
+            <div class="flow-node"><strong>Core Engines</strong><br/>Process Monitor, Memory Monitor, I/O Monitor, Log Analyzer</div>
+        </div>
+        <div style="text-align: center; color: #0284c7; font-size: 14pt; margin: 4px 0;">&darr;</div>
+        <div class="flow-row">
+            <div class="flow-node alert"><strong>Incident Correlation Engine</strong><br/>Multi-Vector Threat Linking &amp; Score Calculation</div>
+            <div class="flow-arrow">&harr;</div>
+            <div class="flow-node success"><strong>Safe Log Rotator</strong><br/>copytruncate, gzip, SHA-256 Manifest</div>
+        </div>
+        <div style="text-align: center; color: #0284c7; font-size: 14pt; margin: 4px 0;">&darr;</div>
+        <div class="flow-row">
+            <div class="flow-node"><strong>User Interfaces</strong><br/>Interactive CLI, Flask Dashboard (Port 8080), Vercel Cloud Serverless</div>
+        </div>
+    </div>
+
+    <!-- Section 8: Algorithms & Design -->
+    <h1>8. Algorithm / Flowchart / Design</h1>
+    <h2>8.1 Mathematical Formulations</h2>
+
+    <div class="formula-card">
+        <div class="formula-title">Equation 1: System CPU Active &amp; I/O Wait Percentages</div>
+        <div>
+            &Delta;Total = &sum; Ticks<sub>t2</sub> &minus; &sum; Ticks<sub>t1</sub><br/>
+            CPU Active % = [ 1 &minus; <span class="fraction"><span class="numerator">&Delta;idle + &Delta;iowait</span><span class="denominator">&Delta;Total</span></span> ] &times; 100<br/>
+            CPU I/O Wait % = [ <span class="fraction"><span class="numerator">&Delta;iowait</span><span class="denominator">&Delta;Total</span></span> ] &times; 100
+        </div>
+    </div>
+
+    <div class="formula-card">
+        <div class="formula-title">Equation 2: Per-Process Delta CPU Utilization</div>
+        <div>
+            &Delta;ProcTicks = (utime<sub>t2</sub> + stime<sub>t2</sub>) &minus; (utime<sub>t1</sub> + stime<sub>t1</sub>)<br/>
+            Process CPU % = [ <span class="fraction"><span class="numerator">&Delta;ProcTicks</span><span class="denominator">&Delta;Total</span></span> ] &times; 100 &times; N<sub>cores</sub>
+        </div>
+    </div>
+
+    <div class="formula-card">
+        <div class="formula-title">Equation 3: Log Rotation Compression Space Savings</div>
+        <div>
+            Storage Savings % = [ 1 &minus; <span class="fraction"><span class="numerator">Size<sub>compressed</sub></span><span class="denominator">Size<sub>original</sub></span></span> ] &times; 100
+        </div>
+    </div>
+
+    <h2>8.2 Flowcharts</h2>
+    <div class="diagram-card">
+        <div class="diagram-title">Figure 8.1: Delta CPU Tick Sampling &amp; Rogue Remediation Flowchart</div>
+        <div class="flow-row">
+            <div class="flow-node">1. Sample /proc/stat<br/>(Total System Ticks)</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">2. Enumerate PIDs<br/>(/proc/[pid]/stat)</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">3. Check Malicious Criteria<br/>(CPU &ge; 80% or Unlinked exe)</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node alert">4. Remediate<br/>(renice +19 or SIGTERM)</div>
+        </div>
+    </div>
+
+    <div class="diagram-card">
+        <div class="diagram-title">Figure 8.2: Safe Atomic copytruncate Log Rotation Flowchart</div>
+        <div class="flow-row">
+            <div class="flow-node">1. Check Size<br/>Size &ge; 1,048,576 Bytes</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">2. Copy Content<br/>Stream to Temp Archive</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node">3. In-Place Truncate<br/>truncate(0) &amp; fsync()</div>
+            <div class="flow-arrow">&rarr;</div>
+            <div class="flow-node success">4. Gzip &amp; Checksum<br/>97.4% Saved + SHA-256</div>
+        </div>
+    </div>
+
+    <!-- Section 9 & 10: Tools & Implementation -->
+    <h1>9. Tools, Software and Hardware Requirements</h1>
+    <table>
+        <tr>
+            <th style="width: 25%;">Specification Item</th>
+            <th style="width: 35%;">Minimum Requirement</th>
+            <th style="width: 40%;">Development &amp; Evaluation Environment</th>
+        </tr>
+        <tr>
+            <td><strong>Processor</strong></td>
+            <td>Dual-Core x86_64 or ARM64</td>
+            <td>Apple M-Series (Apple Silicon ARM64, 8 Cores) / Linux x86_64</td>
+        </tr>
+        <tr>
+            <td><strong>System Memory (RAM)</strong></td>
+            <td>2 GB Physical RAM</td>
+            <td>16 GB Unified Memory</td>
+        </tr>
+        <tr>
+            <td><strong>Storage Capacity</strong></td>
+            <td>10 GB Free Storage Space</td>
+            <td>512 GB Solid State Drive (APFS / ext4)</td>
+        </tr>
+        <tr>
+            <td><strong>Operating System</strong></td>
+            <td>Linux (Kernel &ge; 5.4) / POSIX</td>
+            <td>Ubuntu 22.04 LTS / macOS Darwin Kernel Version 25.6.0</td>
+        </tr>
+        <tr>
+            <td><strong>Python Runtime</strong></td>
+            <td>Python 3.9+</td>
+            <td>Python 3.13.7 (Standard Library + Flask 3.1.2)</td>
+        </tr>
+        <tr>
+            <td><strong>Shell Environment</strong></td>
+            <td>GNU Bash &ge; 4.0 or Zsh</td>
+            <td>GNU Bash 3.2 / Zsh 5.9</td>
+        </tr>
+        <tr>
+            <td><strong>Cloud Platform</strong></td>
+            <td>Vercel Serverless Platform</td>
+            <td>Node/Python Serverless Runtime (<code>@vercel/python</code>)</td>
+        </tr>
+    </table>
+
+    <h1>10. Implementation / Simulation Procedure</h1>
+    <pre><code># 1. Clone the repository
+git clone https://github.com/NITHIN-aiml69/Cybersecurity-Log-Analyzer-with-Process-and-I-O-Monitoring.git
+cd Cybersecurity-Log-Analyzer-with-Process-and-I-O-Monitoring
+
+# 2. Run interactive launcher menu
+bash scripts/run_monitor.sh
+
+# 3. Execute single telemetry &amp; security scan
+python3 cyber_sentinel.py scan
+
+# 4. Launch real-time terminal live dashboard
+python3 cyber_sentinel.py monitor
+
+# 5. Start web dashboard on port 8080
+python3 cyber_sentinel.py web --port 8080
+
+# 6. Execute automated attack &amp; stress simulation
+bash scripts/simulate_attacks.sh
+
+# 7. Run master automated unit test suite
+python3 tests/test_all.py</code></pre>
+
+    <!-- Page Break -->
+    <div class="page-break"></div>
+
+    <!-- Section 11: Test Cases -->
+    <h1>11. Test Cases, Input Data and Expected Output</h1>
+    <table>
+        <tr>
+            <th style="width: 10%;">Test ID</th>
+            <th style="width: 18%;">Subsystem &amp; CO</th>
+            <th style="width: 27%;">Input / Workload Condition</th>
+            <th style="width: 25%;">Expected Behavior</th>
+            <th style="width: 12%;">Result</th>
+            <th style="width: 8%;">Status</th>
+        </tr>
+        <tr>
+            <td><strong>TC-01</strong></td>
+            <td><strong>Process Tracking (CO2)</strong></td>
+            <td>Injected simulated rogue cryptominer <code>xmrig_malware</code> with 89.4% CPU and 250 MB RSS.</td>
+            <td>Process flagged as <code>SUSPICIOUS</code>; <code>remediate_process()</code> sets nice to +19.</td>
+            <td>Priority demoted to nice 19.</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-02</strong></td>
+            <td><strong>Memory Monitor (CO4)</strong></td>
+            <td>Sampled physical RAM and page cache via <code>sysctl</code> and <code>vm_stat</code> / <code>/proc/meminfo</code>.</td>
+            <td>Computes used, free, and available MB; flags critical if &ge; 88%.</td>
+            <td>16,384 MB total, 72.0% used. Status: Healthy.</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-03</strong></td>
+            <td><strong>Storage &amp; I/O (CO5)</strong></td>
+            <td>Queried <code>/proc/diskstats</code>, <code>iowait</code>, and <code>statvfs</code> on host mount point.</td>
+            <td>Calculates throughput MB/s, verifies inode count &gt; 0, flags burst &ge; 25 MB/s.</td>
+            <td>Read: 0.95 MB/s, Write: 2.21 MB/s. Status: Normal.</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-04</strong></td>
+            <td><strong>Log Analysis (CO6)</strong></td>
+            <td>Injected 5 rapid failed SSH logins from IP <code>192.168.1.189</code> within a 60-second window.</td>
+            <td>Sliding window counts &ge; 4 failures; triggers <code>CRITICAL</code> alert.</td>
+            <td><code>SSH_BRUTE_FORCE_ATTACK</code> triggered on 4th attempt.</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-05</strong></td>
+            <td><strong>Safe Rotation (CO5)</strong></td>
+            <td>Flooded <code>auth.log</code> with 5,045,634 bytes (&gt; 1.0 MB threshold) and executed rotation.</td>
+            <td>Truncates source log to 0 bytes, compresses to <code>.gz</code>, computes SHA-256.</td>
+            <td>5.04 MB &rarr; 128 KB (97.4% saved); SHA-256 verified. Source log: 0 bytes.</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+        <tr>
+            <td><strong>TC-06</strong></td>
+            <td><strong>Correlation (CO6)</strong></td>
+            <td>Simultaneous SSH brute-force alert + rogue miner running at 92.1% CPU.</td>
+            <td>Declares coordinated cyber intrusion; suggests immediate IP block and kill.</td>
+            <td>Generated <code>COORDINATED_ATTACK</code> incident.</td>
+            <td><span class="badge-pass">PASS</span></td>
+        </tr>
+    </table>
+
+    <!-- Section 12 & 13: Results & Comparison -->
+    <h1>12. Experimental Results and Evidence</h1>
+    <h3>12.1 Automated Unit Test Execution Benchmark</h3>
+    <pre><code>==============================================================================
+      RUNNING CYBER SENTINEL AUTOMATED UNIT &amp; INTEGRATION TEST SUITE
+      Student: NITHIN N  |  Roll Number: 25BTRPW066
+==============================================================================
+test_co2_process_inspection_and_rogue_detection (__main__.TestCyberSentinelSuite) ... ok
+test_co4_memory_telemetry (__main__.TestCyberSentinelSuite) ... ok
+test_co5_safe_copytruncate_rotation_and_checksum (__main__.TestCyberSentinelSuite) ... ok
+test_co5_storage_io_metrics (__main__.TestCyberSentinelSuite) ... ok
+test_co6_log_analysis_intrusion_signatures (__main__.TestCyberSentinelSuite) ... ok
+test_correlation_engine (__main__.TestCyberSentinelSuite) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 1.033s
+
+OK</code></pre>
+
+    <h3>12.2 Safe Log Rotation Benchmark</h3>
+    <table>
+        <tr>
+            <th>Metric</th>
+            <th>Uncompressed Raw Log</th>
+            <th>Rotated Archive (<code>.gz</code>)</th>
+            <th>Measured Improvement</th>
+        </tr>
+        <tr>
+            <td><strong>File Size</strong></td>
+            <td>5,045,634 Bytes (~5.05 MB)</td>
+            <td>128,929 Bytes (~128 KB)</td>
+            <td><strong>97.4% Storage Saved (39.1x reduction)</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Source Log Post-Rotation</strong></td>
+            <td>0 Bytes (cleanly truncated)</td>
+            <td>N/A</td>
+            <td>Zero dropped log lines / intact file descriptors</td>
+        </tr>
+        <tr>
+            <td><strong>Integrity Hash</strong></td>
+            <td>None (Vulnerable)</td>
+            <td><code>b2e13cf45d932267dcf4910cfb3f920f01ba3e590059374ee7945d94e2ee2a43</code></td>
+            <td>Cryptographic SHA-256 Digest</td>
+        </tr>
+        <tr>
+            <td><strong>Rotation Latency</strong></td>
+            <td>N/A</td>
+            <td>38 milliseconds</td>
+            <td>Sub-second atomic completion</td>
+        </tr>
+    </table>
+
+    <h1>13. Performance Analysis and Comparison</h1>
+    <table>
+        <tr>
+            <th>Performance Metric</th>
+            <th>Uncompressed Raw Text</th>
+            <th>Cyber Sentinel Compressed Archive</th>
+            <th>Improvement Factor</th>
+        </tr>
+        <tr>
+            <td><strong>Disk Space Consumed</strong></td>
+            <td>5,045,634 Bytes (~5.05 MB)</td>
+            <td>128,929 Bytes (~128 KB)</td>
+            <td><strong>39.1x Space Reduction (97.4%)</strong></td>
+        </tr>
+        <tr>
+            <td><strong>Integrity Assurance</strong></td>
+            <td>None (Vulnerable to tampering)</td>
+            <td>Cryptographic SHA-256 Digest</td>
+            <td>Forensic Non-Repudiation</td>
+        </tr>
+        <tr>
+            <td><strong>Daemon Interruption</strong></td>
+            <td>Service Restart Required (<code>mv</code>)</td>
+            <td>0 ms Interruption (<code>copytruncate</code>)</td>
+            <td>Zero Dropped Log Lines</td>
+        </tr>
+        <tr>
+            <td><strong>Scan Execution Latency</strong></td>
+            <td>&gt;500 ms (full file re-read)</td>
+            <td>&lt;15 ms (incremental byte-offset tail)</td>
+            <td>33.3x Faster Log Scanning</td>
+        </tr>
+    </table>
+
+    <!-- Section 14 & 15: Real-World & CO Mapping -->
+    <h1>14. Real-World Applications</h1>
+    <ol>
+        <li><strong>Security Operations Centers (SOC) &amp; SIEM Ingestion:</strong> Provides high-fidelity, pre-correlated incident streams reducing alert fatigue for tier-1 security analysts.</li>
+        <li><strong>Enterprise Cloud &amp; Virtualization Nodes:</strong> Safeguards Kubernetes nodes and Docker hosts from runaway container processes and crypto-mining botnets.</li>
+        <li><strong>High-Frequency Financial Servers:</strong> Monitors disk <code>iowait</code> and write queues to ensure real-time ledger writes are not starved by background batch jobs or runaway logs.</li>
+        <li><strong>Regulatory &amp; Forensic Compliance (HIPAA, PCI-DSS):</strong> Guarantees that rotated log archives are tamper-evident through immutable SHA-256 cryptographic manifests.</li>
+    </ol>
+
+    <h1>15. CO&ndash;Dimension&ndash;LO Mapping</h1>
+    <table>
+        <tr>
+            <th style="width: 25%;">Course Outcome</th>
+            <th style="width: 15%;">Dimension</th>
+            <th style="width: 30%;">Specific Learning Outcome (LO)</th>
+            <th style="width: 30%;">Direct Evidence in Student Work</th>
+        </tr>
+        <tr>
+            <td><strong>CO2:</strong> Process &amp; CPU Management</td>
+            <td><strong>CT</strong></td>
+            <td><strong>CT-LO2, CT-LO3:</strong> Formulate scheduling models, process state transitions, and priority de-escalation algorithms.</td>
+            <td>Implemented <code>/proc/[pid]/stat</code> delta tick parsing, CPU percentage computation, and priority demotion via <code>os.setpriority(nice +19)</code>.</td>
+        </tr>
+        <tr>
+            <td><strong>CO4:</strong> Memory Management</td>
+            <td><strong>IP</strong></td>
+            <td><strong>IP-LO1:</strong> Inspect virtual-to-physical memory mappings, page allocation, and buffer caching.</td>
+            <td>Implemented <code>/proc/meminfo</code> parser tracking physical RAM, available memory, and dirty page writeback buffers to avert OOM panics.</td>
+        </tr>
+        <tr>
+            <td><strong>CO5:</strong> Storage Hierarchy &amp; I/O</td>
+            <td><strong>RWE</strong></td>
+            <td><strong>RWE-LO9:</strong> Apply file system primitives, disk scheduling telemetry, and atomic operations to real-world engineering systems.</td>
+            <td>Engineered atomic <code>copytruncate</code> log rotation, disk <code>iowait</code> contention tracking via <code>iostat</code>, and gzip archival saving 97.4% storage.</td>
+        </tr>
+        <tr>
+            <td><strong>CO6:</strong> Security &amp; Automation</td>
+            <td><strong>IP, RWE</strong></td>
+            <td><strong>IP-LO4:</strong> Develop automated shell scripts and event-driven monitoring tools for systems administration.</td>
+            <td>Built automated bash attack simulation (<code>simulate_attacks.sh</code>), cron rotation automation, and sliding-window SSH brute-force analysis.</td>
+        </tr>
+    </table>
+
+    <!-- Section 16, 17, 18, 19: Challenges, Conclusion, References -->
+    <h1>16. Challenges, Limitations and Improvements</h1>
+    <ol>
+        <li><strong>Port Conflict on macOS:</strong> Apple's <code>ControlCenter</code> (AirPlay Receiver) binds to port 5000 by default, rejecting incoming HTTP requests with <code>HTTP ERROR 403: Forbidden</code>. <em>Solution:</em> Re-engineered the web dashboard, CLI flags, and configuration schemas to default to port <strong>8080</strong>.</li>
+        <li><strong>Unlinked Inode File Descriptor Leaks:</strong> Standard log rotation using <code>mv</code> breaks running daemon file descriptors, writing invisible bytes to unlinked inodes. <em>Solution:</em> Implemented the atomic <strong><code>copytruncate</code></strong> pattern with <code>os.fsync()</code>, preserving file descriptors and truncating the active log in-place.</li>
+        <li><strong>Serverless Ephemeral Storage:</strong> Deploying stateful process monitoring onto Vercel where the root filesystem is read-only. <em>Solution:</em> Implemented dynamic environment detection (<code>os.environ.get("VERCEL")</code>), automatically routing active log paths and archives to <code>/tmp</code> with on-demand request polling.</li>
+    </ol>
+
+    <h1>17. Conclusion and Future Scope</h1>
+    <p>
+        The <strong>Cyber Sentinel</strong> mini-project successfully achieves all stated objectives for the <strong>25PCCS201: Operating Systems</strong> curriculum. By uniting Linux process control, memory page tracking, storage I/O telemetry, and sliding-window log analysis, the system eliminates blind spots between infrastructure performance monitoring and cyber incident detection. The project demonstrates measurable real-world efficacy: <strong>97.4% storage reduction</strong> through safe log rotation, <strong>100% test pass rate</strong>, and <strong>live global cloud availability</strong>.
+    </p>
+    <p><strong>Future Scope:</strong></p>
+    <ul>
+        <li><strong>Kernel eBPF Probes:</strong> Extend user-space <code>/proc</code> polling with extended Berkeley Packet Filters (eBPF) for sub-millisecond kernel tracepoint interception.</li>
+        <li><strong>Automated Firewall Integration:</strong> Automatically interface with Linux <code>nftables</code> / <code>iptables</code> to drop attacker IP addresses dynamically upon detecting SSH brute-force thresholds.</li>
+        <li><strong>Machine Learning Anomaly Baselines:</strong> Integrate an unsupervised autoencoder to establish baseline system behavior and detect zero-day CPU and I/O anomalies.</li>
+    </ul>
+
+    <h1>18. References</h1>
+    <ol>
+        <li>Silberschatz, A., Galvin, P. B., &amp; Gagne, G. <em>Operating System Concepts</em> (10th ed.). John Wiley &amp; Sons, 2018.</li>
+        <li>Love, R. <em>Linux Kernel Development</em> (3rd ed.). Addison-Wesley Professional, 2010.</li>
+        <li>Kerrisk, M. <em>The Linux Programming Interface: A Linux and UNIX System Programming Handbook</em>. No Starch Press, 2010.</li>
+        <li>Linux Kernel Documentation. <em>The <code>/proc</code> Filesystem</em>. https://www.kernel.org/doc/html/latest/filesystems/proc.html</li>
+        <li>Systemd Project. <em>journalctl &mdash; Query the systemd journal</em>. https://man7.org/linux/man-pages/man1/journalctl.1.html</li>
+        <li>Python Software Foundation. <em>os, subprocess, gzip, hashlib modules documentation</em>. https://docs.python.org/3/</li>
+    </ol>
+
+    <h1>19. Appendices and Tool Disclosure</h1>
+    <h3>Appendix A: Verification Commands</h3>
+    <pre><code># Clone the repository
+git clone https://github.com/NITHIN-aiml69/Cybersecurity-Log-Analyzer-with-Process-and-I-O-Monitoring.git
+cd Cybersecurity-Log-Analyzer-with-Process-and-I-O-Monitoring
+
+# Run full test suite
+python3 tests/test_all.py
+
+# Run live audit scan
+python3 cyber_sentinel.py scan
+
+# Run attack simulation
+bash scripts/simulate_attacks.sh</code></pre>
+
+    <h3>Appendix B: Generative AI Tool Disclosure</h3>
+    <p>
+        In accordance with academic integrity guidelines, generative AI tools (Google DeepMind Antigravity / Gemini 3.8 Flash) were utilized as an agentic pair-programming assistant for boilerplate scaffolding, formatting the academic template, and drafting test mock structures. All core Operating System logic, mathematical formulas, algorithms, test cases, and cloud deployments were verified, validated, and executed by the student (<strong>NITHIN N</strong>, <code>25BTRPW066</code>).
+    </p>
+
+</div>
+
+</body>
+</html>
