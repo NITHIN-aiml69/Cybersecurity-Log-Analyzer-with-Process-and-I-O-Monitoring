@@ -84,6 +84,10 @@ html_content = f"""<!DOCTYPE html>
             page-break-inside: avoid;
             break-inside: avoid;
         }}
+        .cover-border-box {{
+            height: 98vh !important;
+            padding: 24px 30px !important;
+        }}
     }}
 
     /* Print control banner */
@@ -115,180 +119,162 @@ html_content = f"""<!DOCTYPE html>
         transform: translateY(-1px);
     }}
 
-    /* COVER PAGE FORMAT - MATCHING JAIN UNIVERSITY SPECIFICATION */
-    .cover-frame {{
-        border: 2.5px solid #0f172a;
-        padding: 24px 28px 20px;
+    /* ================= EXACT COVER PAGE STYLING (TIMES NEW ROMAN & EXACT REFERENCE LAYOUT) ================= */
+    .cover-page-wrapper {{
+        page-break-after: always;
+        break-after: page;
+    }}
+    .cover-border-box {{
+        border: 2px solid #000000;
+        padding: 28px 32px 30px;
         text-align: center;
         background: #ffffff;
         min-height: 960px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        align-items: center;
         box-sizing: border-box;
+        font-family: "Times New Roman", Times, Georgia, serif;
+        color: #000000;
     }}
-    .cover-logo {{
-        max-width: 330px;
+    .cover-logo-img {{
+        max-width: 380px;
         height: auto;
-        margin: 0 auto 10px;
         display: block;
+        margin: 0 auto 12px;
     }}
-    .univ-dept-title {{
-        font-size: 12.5pt;
-        font-weight: 700;
-        color: #0f172a;
+    .ref-dept-1 {{
+        font-size: 13pt;
+        font-weight: normal;
+        margin: 0 0 4px;
+        line-height: 1.25;
+    }}
+    .ref-dept-2 {{
+        font-size: 11.5pt;
+        font-weight: normal;
+        margin: 0 0 3px;
+    }}
+    .ref-dept-3 {{
+        font-size: 11.5pt;
+        font-weight: normal;
+        margin: 0 0 3px;
+    }}
+    .ref-campus-1 {{
+        font-size: 10.5pt;
+        font-weight: normal;
+        margin: 0 0 2px;
+    }}
+    .ref-campus-2 {{
+        font-size: 10.5pt;
+        font-weight: normal;
         margin: 0;
+    }}
+
+    .ref-session-block {{
+        margin: 20px 0 10px;
+    }}
+    .ref-ay {{
+        font-size: 12pt;
+        font-weight: bold;
+        margin: 0;
+    }}
+    .ref-sem {{
+        font-size: 11pt;
+        font-weight: normal;
+        margin: 3px 0 0;
+    }}
+
+    .ref-report-tag {{
+        font-size: 11.5pt;
+        font-weight: normal;
+        margin: 18px 0 14px;
+    }}
+    .ref-project-title {{
+        font-size: 13.5pt;
+        font-weight: bold;
+        text-transform: uppercase;
         letter-spacing: 0.02em;
+        line-height: 1.35;
+        margin: 0 auto;
+        max-width: 90%;
     }}
-    .univ-dept-sub {{
+
+    .ref-degree-block {{
+        margin: 20px 0 10px;
+        line-height: 1.45;
+    }}
+    .ref-degree-submitted {{
         font-size: 10pt;
-        color: #334155;
-        margin: 2px 0;
-        font-weight: 500;
+        margin: 0 0 2px;
     }}
-    .univ-campus {{
-        font-size: 9pt;
-        color: #475569;
-        margin: 2px 0 0;
+    .ref-degree-award {{
+        font-size: 10pt;
+        margin: 0 0 12px;
+    }}
+    .ref-deg-btech {{
+        font-size: 12pt;
+        font-weight: bold;
+        letter-spacing: 0.03em;
+        margin: 0 0 3px;
+    }}
+    .ref-deg-in {{
+        font-size: 10.5pt;
+        font-weight: normal;
+        margin: 0 0 3px;
+    }}
+    .ref-deg-cse {{
+        font-size: 12pt;
+        font-weight: bold;
+        letter-spacing: 0.03em;
+        margin: 0;
+    }}
+
+    .ref-submitted-by-block {{
+        margin: 20px 0 10px;
+    }}
+    .ref-sub-label {{
+        font-size: 11pt;
+        font-weight: normal;
+        margin: 0 0 8px;
+    }}
+    .ref-sub-name {{
+        font-size: 11pt;
+        font-weight: bold;
+        margin: 0 0 3px;
+    }}
+    .ref-sub-usn {{
+        font-size: 11pt;
+        font-weight: bold;
+        margin: 0;
+    }}
+
+    .ref-guidance-block {{
+        margin: 18px 0 5px;
+    }}
+    .ref-guide-label {{
+        font-size: 11pt;
+        font-weight: normal;
+        margin: 0 0 8px;
+    }}
+    .ref-guide-name {{
+        font-size: 11.5pt;
+        font-weight: bold;
+        margin: 0 0 3px;
+    }}
+    .ref-guide-prof {{
+        font-size: 10.5pt;
+        font-weight: normal;
+        margin: 0 0 2px;
+    }}
+    .ref-guide-dept {{
+        font-size: 10.5pt;
+        font-weight: normal;
+        margin: 0 0 2px;
         line-height: 1.35;
     }}
-    .cover-session {{
-        margin: 14px 0 10px;
-        border-top: 1px solid #e2e8f0;
-        border-bottom: 1px solid #e2e8f0;
-        padding: 6px 0;
-    }}
-    .cover-session .ay {{
-        font-size: 11pt;
-        font-weight: 700;
-        color: #0f172a;
-    }}
-    .cover-session .sem {{
-        font-size: 10pt;
-        font-weight: 600;
-        color: #475569;
-    }}
-    .cover-report-tag {{
-        font-size: 11pt;
-        color: #334155;
-        margin: 10px 0 6px;
-        font-style: italic;
-    }}
-    .cover-project-title {{
-        font-size: 14.5pt;
-        font-weight: 800;
-        color: #0f172a;
-        margin: 8px auto 12px;
-        line-height: 1.3;
-        text-transform: uppercase;
-        letter-spacing: 0.04em;
-        padding: 8px 14px;
-        border: 1.5px solid #0f172a;
-        background: #f8fafc;
-        max-width: 92%;
-    }}
-    .cover-degree-statement {{
-        font-size: 9pt;
-        color: #334155;
-        line-height: 1.45;
-        margin: 10px 0;
-    }}
-    .cover-degree-name {{
-        font-size: 12pt;
-        font-weight: 800;
-        color: #0f172a;
-        letter-spacing: 0.05em;
-        margin: 4px 0;
-    }}
-    .cover-degree-in {{
-        font-size: 9.5pt;
-        font-weight: 600;
-        color: #475569;
-        margin: 1px 0;
-    }}
-    .cover-degree-branch {{
-        font-size: 12pt;
-        font-weight: 800;
-        color: #0f172a;
-        letter-spacing: 0.05em;
-        margin: 4px 0 12px;
-    }}
 
-    /* Student, Guide and QR Split Grid */
-    .cover-grid {{
-        display: grid;
-        grid-template-columns: 1.15fr 1.35fr 1fr;
-        gap: 12px;
-        text-align: left;
-        margin-top: 10px;
-        padding-top: 12px;
-        border-top: 1.5px solid #0f172a;
-        align-items: start;
-    }}
-    .grid-block {{
-        font-size: 8.5pt;
-        line-height: 1.4;
-    }}
-    .grid-block-header {{
-        font-size: 9.5pt;
-        font-weight: 700;
-        color: #0284c7;
-        margin-bottom: 4px;
-        text-transform: uppercase;
-        letter-spacing: 0.03em;
-        border-bottom: 1px solid #cbd5e1;
-        padding-bottom: 2px;
-    }}
-    .student-name {{
-        font-size: 10pt;
-        font-weight: 800;
-        color: #0f172a;
-    }}
-    .student-usn {{
-        font-size: 9pt;
-        font-weight: 700;
-        color: #0284c7;
-        font-family: ui-monospace, Menlo, Consolas, monospace;
-    }}
-    .guide-name {{
-        font-size: 10pt;
-        font-weight: 800;
-        color: #0f172a;
-    }}
-    .guide-role {{
-        font-size: 8.5pt;
-        color: #475569;
-    }}
-    .qr-card-cover {{
-        background: #f8fafc;
-        border: 1px solid #cbd5e1;
-        border-radius: 6px;
-        padding: 8px;
-        text-align: center;
-    }}
-    .qr-img {{
-        width: 78px;
-        height: 78px;
-        display: block;
-        margin: 0 auto 4px;
-        border: 1px solid #e2e8f0;
-        border-radius: 4px;
-        background: #ffffff;
-    }}
-    .qr-label {{
-        font-size: 7.5pt;
-        font-weight: 700;
-        color: #0f172a;
-        margin-bottom: 2px;
-    }}
-    .qr-url {{
-        font-size: 7pt;
-        color: #0284c7;
-        word-break: break-all;
-        font-weight: 600;
-    }}
-
-    /* Standard Academic Typography */
+    /* Standard Academic Typography for body pages */
     h1 {{
         font-size: 12pt;
         color: #0f172a;
@@ -517,6 +503,29 @@ html_content = f"""<!DOCTYPE html>
         font-size: 7.5pt;
         color: #64748b;
     }}
+
+    /* QR Code Card in Parameter section */
+    .qr-banner {{
+        background: #f8fafc;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        padding: 10px 14px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 10px 0 14px;
+    }}
+    .qr-banner-img {{
+        width: 80px;
+        height: 80px;
+        border: 1px solid #e2e8f0;
+        border-radius: 4px;
+        background: #ffffff;
+    }}
+    .qr-banner-text {{
+        font-size: 8.5pt;
+        line-height: 1.45;
+    }}
 </style>
 </head>
 <body>
@@ -527,77 +536,65 @@ html_content = f"""<!DOCTYPE html>
     <div class="print-bar no-print">
         <div>
             <strong>🎓 25PCCS201 Mini-Project Report &mdash; Official University Format</strong><br/>
-            <span style="font-size: 11px; opacity: 0.95;">Student: NITHIN N (USN: 25BTRPW066) | Section: CSE E | Guide: Dr. N. Satheesh</span>
+            <span style="font-size: 11px; opacity: 0.95;">Student: NITHIN N (USN: 25BTRPW066) | Guide: Dr. N. Satheesh</span>
         </div>
         <button class="print-btn" onclick="window.print()">🖨️ Save as PDF / Print</button>
     </div>
 
-    <!-- ================= PAGE 1: OFFICIAL JAIN UNIVERSITY COVER PAGE ================= -->
-    <div class="cover-frame">
-        <!-- Top: Logo & University Address Hierarchy -->
-        <div>
-            <img src="{logo_b64}" alt="JAIN (Deemed-to-be University)" class="cover-logo" />
-            <h2 class="univ-dept-title">School of Computer Science and Engineering</h2>
-            <div class="univ-dept-sub">(Computer Science &amp; Engineering)</div>
-            <div class="univ-dept-sub">Faculty of Engineering &amp; Technology</div>
-            <div class="univ-campus">
-                Jain Global Campus, Kanakapura Taluk &ndash; 562112<br/>
-                Ramanagara District, Karnataka, India
-            </div>
-        </div>
-
-        <!-- Academic Session -->
-        <div class="cover-session">
-            <div class="ay">AY: 2026-2027</div>
-            <div class="sem">(III Semester)</div>
-        </div>
-
-        <!-- Title Block -->
-        <div>
-            <div class="cover-report-tag">A Mini Project Report on</div>
-            <div class="cover-project-title">
-                &ldquo;CYBERSECURITY LOG ANALYZER WITH PROCESS AND I/O MONITORING&rdquo;
-            </div>
-        </div>
-
-        <!-- Degree Award Statement -->
-        <div>
-            <div class="cover-degree-statement">
-                Submitted in partial fulfilment of Course Code: <strong>25PCCS201</strong> Course Name: <strong>Operating Systems</strong><br/>
-                for the award of the degree of
-            </div>
-            <div class="cover-degree-name">BACHELOR OF TECHNOLOGY</div>
-            <div class="cover-degree-in">IN</div>
-            <div class="cover-degree-branch">COMPUTER SCIENCE AND ENGINEERING</div>
-        </div>
-
-        <!-- Submission, Guidance & Live Website QR Grid -->
-        <div class="cover-grid">
-            <div class="grid-block">
-                <div class="grid-block-header">Submitted by</div>
-                <div class="student-name">NAME: NITHIN N</div>
-                <div><strong>USN:</strong> <span class="student-usn">25BTRPW066</span></div>
-                <div><strong>SECTION:</strong> CSE E</div>
-                <div style="font-size: 7.5pt; color: #64748b; margin-top: 2px;">Department of Computer Science &amp; Engg.</div>
+    <!-- ================= PAGE 1: EXACT JAIN UNIVERSITY COVER PAGE FORMAT ================= -->
+    <div class="cover-page-wrapper">
+        <div class="cover-border-box">
+            <!-- Top: University Logo & Hierarchy -->
+            <div>
+                <img src="{logo_b64}" alt="JAIN (Deemed-to-be University)" class="cover-logo-img" />
+                <div class="ref-dept-1">School of Computer Science and Engineering</div>
+                <div class="ref-dept-2">(Computer Science &amp; Engineering)</div>
+                <div class="ref-dept-3">Faculty of Engineering &amp; Technology</div>
+                <div class="ref-campus-1">Jain Global Campus, Kanakapura Taluk - 562112</div>
+                <div class="ref-campus-2">Ramanagara District, Karnataka, India</div>
             </div>
 
-            <div class="grid-block">
-                <div class="grid-block-header">Under the guidance of</div>
-                <div class="guide-name">Dr. N. Satheesh</div>
-                <div class="guide-role">Professor</div>
-                <div style="font-size: 7.5pt; color: #475569; margin-top: 1px;">
+            <!-- Academic Session -->
+            <div class="ref-session-block">
+                <div class="ref-ay">AY: 2026-2027</div>
+                <div class="ref-sem">(III Semester)</div>
+            </div>
+
+            <!-- Report Title Block -->
+            <div>
+                <div class="ref-report-tag">A Mini Project Report on</div>
+                <div class="ref-project-title">
+                    &ldquo;CYBERSECURITY LOG ANALYZER WITH PROCESS AND I/O MONITORING&rdquo;
+                </div>
+            </div>
+
+            <!-- Degree Statement -->
+            <div class="ref-degree-block">
+                <div class="ref-degree-submitted">Submitted in partial fulfilment of Course Code: 25PCCS201 Course Name: Operating Systems</div>
+                <div class="ref-degree-award">for the award of the degree of</div>
+                <div class="ref-deg-btech">BACHELOR OF TECHNOLOGY</div>
+                <div class="ref-deg-in">IN</div>
+                <div class="ref-deg-cse">COMPUTER SCIENCE AND ENGINEERING</div>
+            </div>
+
+            <!-- Submitted by Block -->
+            <div class="ref-submitted-by-block">
+                <div class="ref-sub-label">Submitted by</div>
+                <div class="ref-sub-name">NAME: NITHIN N</div>
+                <div class="ref-sub-usn">USN: 25BTRPW066</div>
+            </div>
+
+            <!-- Under the guidance of Block -->
+            <div class="ref-guidance-block">
+                <div class="ref-guide-label">Under the guidance of</div>
+                <div class="ref-guide-name">Dr. N. Satheesh</div>
+                <div class="ref-guide-prof">Professor</div>
+                <div class="ref-guide-dept">
                     Department of Computer Science and Engineering<br/>
                     School of Computer Science &amp; Engineering<br/>
                     Faculty of Engineering &amp; Technology<br/>
                     JAIN (Deemed to be University)
                 </div>
-            </div>
-
-            <div class="grid-block qr-card-cover">
-                <div class="qr-label">📱 Live Cloud Website</div>
-                <img src="{qr_b64}" alt="Website QR Code" class="qr-img" />
-                <div class="qr-label">Scan to View on Vercel</div>
-                <div class="qr-url"><a href="https://cybersecurity-log-analyzer-with-pro.vercel.app" target="_blank" style="color: #0284c7; text-decoration: none;">cybersecurity-log-analyzer-with-pro.vercel.app</a></div>
             </div>
         </div>
     </div>
@@ -605,8 +602,19 @@ html_content = f"""<!DOCTYPE html>
     <!-- Natural Page Break -->
     <div class="page-break"></div>
 
-    <!-- ================= PAGE 2: Project Metadata, Declaration & Certificate ================= -->
+    <!-- ================= PAGE 2: Project Metadata, Live QR, Declaration & Certificate ================= -->
     <h2 style="margin-top: 0;">Project Parameters and Course Alignment</h2>
+
+    <!-- Live Website QR Code Banner -->
+    <div class="qr-banner">
+        <img src="{qr_b64}" alt="Website QR Code" class="qr-banner-img" />
+        <div class="qr-banner-text">
+            <strong>📱 Live Cloud Deployment &amp; Interactive Telemetry Portal:</strong><br/>
+            URL: <a href="https://cybersecurity-log-analyzer-with-pro.vercel.app" target="_blank" style="color: #0284c7; font-weight: 700;">https://cybersecurity-log-analyzer-with-pro.vercel.app</a><br/>
+            <span style="font-size: 8pt; color: #64748b;">Scan the QR code with any smartphone camera to inspect the live monitoring dashboard, run real-time attack simulations, and audit process telemetry.</span>
+        </div>
+    </div>
+
     <table>
         <tr>
             <th style="width: 30%;">Project Parameter</th>
@@ -1249,9 +1257,9 @@ docs_out = os.path.join(os.path.dirname(__file__), "FINAL_MINI_PROJECT_REPORT.ht
 with open(docs_out, "w", encoding="utf-8") as f:
     f.write(html_content)
 
-# Write to Desktop for instant access
-desktop_out = "FINAL_MINI_PROJECT_REPORT.html"
-with open(desktop_out, "w", encoding="utf-8") as f:
+# Write to workspace root
+root_out = "FINAL_MINI_PROJECT_REPORT.html"
+with open(root_out, "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print(f"Successfully generated report at:\n  - {docs_out} ({os.path.getsize(docs_out)} bytes)\n  - {desktop_out} ({os.path.getsize(desktop_out)} bytes)")
+print(f"Generated report successfully at {docs_out} and {root_out}")
